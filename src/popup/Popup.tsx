@@ -1,37 +1,33 @@
-import { useState, useEffect } from 'react';
-
 import './Popup.scss';
 import linkStyles from './link.module.scss';
+import { updateState } from '../management/store';
+import { useExtensionState } from '../shared/hooks/useExtensionState';
 
 export const Popup = () => {
-  const [count, setCount] = useState(0);
+  const state = useExtensionState();
   const link = 'https://github.com/guocaoyi/create-chrome-ext';
 
   const minus = () => {
-    if (count > 0) setCount(count - 1);
+    if (state.counter === 0) return;
+    updateState({
+      counter: state.counter - 1
+    });
   };
 
-  const add = () => setCount(count + 1);
-
-  useEffect(() => {
-    chrome.storage.sync.get(['count'], (result) => {
-      setCount(result.count || 0);
+  const add = () => {
+    updateState({
+      counter: state.counter + 1
     });
-  }, []);
-
-  useEffect(() => {
-    chrome.storage.sync.set({ count });
-    chrome.runtime.sendMessage({ type: 'COUNT', count });
-  }, [count]);
+  };
 
   return (
     <main>
       <h3>Popup Page</h3>
       <div className="calc">
-        <button onClick={minus} disabled={count <= 0}>
+        <button onClick={minus} disabled={state.counter <= 0}>
           -
         </button>
-        <label>{count}</label>
+        <label>{state.counter}</label>
         <button onClick={add}>+</button>
       </div>
       <a

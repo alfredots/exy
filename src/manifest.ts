@@ -28,6 +28,10 @@ export const manifest = defineManifest({
     {
       matches: ['http://*/*', 'https://*/*'],
       js: ['src/contentScript/index.ts']
+    },
+    {
+      matches: ['https://www.google.com/*'],
+      js: ['src/contentScript/googleRender.tsx']
     }
   ],
   side_panel: {
@@ -47,5 +51,8 @@ export const manifest = defineManifest({
   permissions: ['sidePanel', 'storage'],
   chrome_url_overrides: {
     newtab: 'newtab.html'
+  },
+  externally_connectable: {
+    matches: ['http://127.0.0.1:5500/page-test/index.html']
   }
 });

@@ -25,8 +25,12 @@
     "lint:eslint": "eslint src --max-warnings=0"
   },
   "dependencies": {
+    "axios": "^1.7.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-shadow": "^20.5.0",
+    "styled-components": "^6.1.11",
+    "valtio": "^1.13.2"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.0-beta.19",

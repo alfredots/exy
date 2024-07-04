@@ -13,16 +13,10 @@ export const NewTab = () => {
   const [time, setTime] = useState(getTime());
   const link = 'https://github.com/guocaoyi/create-chrome-ext';
 
-  const test2 = () => {
-    setTime(getTime());
-  };
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTime(getTime());
     }, 1000);
-
-    test2();
 
     return () => {
       clearInterval(intervalId);
