@@ -1,33 +1,38 @@
+import { useEffect } from 'react';
 import './Popup.scss';
 import linkStyles from './link.module.scss';
-import { updateState } from '../management/store';
-import { useExtensionState } from '../shared/hooks/useExtensionState';
+import { makeLocalStorage } from 'shared/factories/cache/makeLocalStorage';
+import { useStorageState } from 'shared/hooks/useStorageState';
 
 export const Popup = () => {
-  const state = useExtensionState();
+  const [counter, setCounter] = useStorageState('counter');
   const link = 'https://github.com/guocaoyi/create-chrome-ext';
+  const storage = makeLocalStorage();
 
   const minus = () => {
-    if (state.counter === 0) return;
-    updateState({
-      counter: state.counter - 1
-    });
+    if (counter === 0) return;
+
+    setCounter(counter + 1);
   };
 
   const add = () => {
-    updateState({
-      counter: state.counter + 1
-    });
+    setCounter(counter + 1);
   };
+
+  useEffect(() => {
+    storage.get(['counter']).then(({ counter }) => {
+      console.log(counter);
+    });
+  }, [storage]);
 
   return (
     <main>
       <h3>Popup Page</h3>
       <div className="calc">
-        <button onClick={minus} disabled={state.counter <= 0}>
+        <button onClick={minus} disabled={counter <= 0}>
           -
         </button>
-        <label>{state.counter}</label>
+        <label>{counter}</label>
         <button onClick={add}>+</button>
       </div>
       <a
