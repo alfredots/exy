@@ -26,15 +26,15 @@
     "lint:eslint": "eslint src --max-warnings=0"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.64.2",
     "axios": "^1.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-shadow": "^20.5.0",
-    "styled-components": "^6.1.11",
-    "valtio": "^1.13.2"
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
-    "@crxjs/vite-plugin": "^2.0.0-beta.19",
+    "@crxjs/vite-plugin": "^2.0.0-beta.26",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
@@ -55,7 +55,7 @@
     "jsdom": "^24.1.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2",
-    "vite": "^4.4.11",
+    "vite": "^5.4.10",
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^1.6.0"
   }

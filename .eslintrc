@@ -28,7 +28,8 @@
     "react-hooks",
     "import",
     "jsx-a11y",
-    "prettier"
+    "prettier",
+    "check-file"
   ],
   "settings": {
     "react": {
@@ -41,7 +42,17 @@
     "no-case-declarations": 0,
     "@typescript-eslint/no-unused-vars": "warn",
     "react/react-in-jsx-scope": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{tsx}": "PASCAL_CASE",
+        "**/*.{ts}": "CAMEL_CASE"
+      },
+      {
+        "ignoreMiddleExtensions": true
+      }
+    ]
   },
   "globals": {
     "chrome": "readonly"
