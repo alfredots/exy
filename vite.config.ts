@@ -23,6 +23,7 @@ export default defineConfig(() => {
       setupFiles: './tests/setup.js'
     },
     server: {
+      allowedHosts: ['.localhost'],
       port: 5173,
       strictPort: true,
       hmr: {

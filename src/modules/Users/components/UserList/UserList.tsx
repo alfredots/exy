@@ -6,11 +6,7 @@ type UserListProps = {
 };
 
 export const UserList = ({ listUsers }: UserListProps) => {
-  const { users, isLoading } = useUserList({ listUsers });
-
-  if (isLoading) {
-    return <>Carregando...</>;
-  }
+  const { users } = useUserList({ listUsers });
 
   return <div>{users?.map((user) => <p key={user.id}>{user.name}</p>)}</div>;
 };

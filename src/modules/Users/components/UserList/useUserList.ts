@@ -1,16 +1,23 @@
 import { User } from '@/domain/entities';
-import { useQuery } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
 
 type UseUserListProps = {
   listUsers: () => Promise<User[]>;
 };
 
 export const useUserList = ({ listUsers }: UseUserListProps) => {
-  const { data, isLoading, isError } = useQuery({ queryKey: ['users'], queryFn: listUsers });
+  const [users, setUsers] = useState<User[] | null>(null);
+
+  useEffect(() => {
+    listUsers()
+      .then((res) => {
+        console.log({ res });
+        return res;
+      })
+      .then(setUsers);
+  }, []);
 
   return {
-    users: data,
-    isLoading,
-    isError
+    users
   };
 };
