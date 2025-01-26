@@ -6,10 +6,12 @@ class UserService {
   constructor(private listUsersUseCase: ListUsersUseCase) {}
 
   async listUsers(): Promise<User[]> {
+    console.log(this);
     return await this.listUsersUseCase.execute();
   }
 }
 
 const userRemoteGateway = makeUserRemoteGateway();
 const listUsersUseCase = new ListUsersUseCase(userRemoteGateway);
+
 export const userService = new UserService(listUsersUseCase);

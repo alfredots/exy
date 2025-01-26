@@ -9,12 +9,16 @@ export const useUserList = ({ listUsers }: UseUserListProps) => {
   const [users, setUsers] = useState<User[] | null>(null);
 
   useEffect(() => {
-    listUsers()
-      .then((res) => {
+    const init = async () => {
+      try {
+        const res = await listUsers();
         console.log({ res });
-        return res;
-      })
-      .then(setUsers);
+        setUsers(res);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    init();
   }, []);
 
   return {
