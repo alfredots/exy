@@ -28,4 +28,4 @@ class UserRemoteGateway implements UserGateway {
   }
 }
 
-export const makeUserRemoteGateway = () => new UserRemoteGateway(endpoints.users, makeAxiosHttpClientAdapter());
+export const userRemoteGateway = new UserRemoteGateway(endpoints.users, makeAxiosHttpClientAdapter());
