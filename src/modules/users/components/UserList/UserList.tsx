@@ -1,5 +1,6 @@
+import { useUserList } from './use-user-list';
+
 import { User } from '@/domain/entities';
-import { useUserList } from './useUserList';
 
 type UserListProps = {
   listUsers: () => Promise<User[]>;

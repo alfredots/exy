@@ -22,15 +22,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "react-hooks",
-    "import",
-    "jsx-a11y",
-    "prettier",
-    "check-file"
-  ],
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "prettier", "check-file", "import-helpers"],
   "settings": {
     "react": {
       "version": "detect"
@@ -39,18 +31,30 @@
   "rules": {
     "import/named": 0,
     "import/no-named-as-default": 0,
+    "import/no-cycle": "error",
+    "import/no-unresolved": "off",
+    "import/default": "off",
+    "import/no-named-as-default-member": "off",
     "no-case-declarations": 0,
     "@typescript-eslint/no-unused-vars": "warn",
     "react/react-in-jsx-scope": "off",
-    "import/no-unresolved": "off",
+
     "check-file/filename-naming-convention": [
       "error",
       {
         "**/*.{tsx}": "PASCAL_CASE",
-        "**/*.{ts}": "CAMEL_CASE"
+        "**/*.{ts}": "KEBAB_CASE"
       },
       {
         "ignoreMiddleExtensions": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object"],
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
       }
     ]
   },

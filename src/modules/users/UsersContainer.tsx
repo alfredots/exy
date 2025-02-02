@@ -1,4 +1,4 @@
-import { userService } from '@/application/services/UserService';
+import { userService } from '@/main/services';
 import { UserList } from '@/modules/users/components/UserList';
 
 export const UsersContainer = () => {
