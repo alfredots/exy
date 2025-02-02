@@ -1,1 +1,1 @@
-export * from './data-storage-adapter';
+export * from './local-storage-adapter';

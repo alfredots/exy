@@ -1,4 +1,4 @@
-import { UsersContainer } from '@/modules/users';
+import { UsersContainer } from '@/presentation/modules/users';
 
 export const Popup = () => {
   return (

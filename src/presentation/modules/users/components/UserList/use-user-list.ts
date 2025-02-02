@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 
 import { User } from '@/domain/entities';
+import { ListUsers } from '@/domain/use-cases';
 
 type UseUserListProps = {
-  listUsers: () => Promise<User[]>;
+  listUsers: ListUsers;
 };
 
 export const useUserList = ({ listUsers }: UseUserListProps) => {
@@ -12,7 +13,7 @@ export const useUserList = ({ listUsers }: UseUserListProps) => {
   useEffect(() => {
     const init = async () => {
       try {
-        const res = await listUsers();
+        const res = await listUsers.execute();
         setUsers(res);
       } catch (error) {
         console.error(error);

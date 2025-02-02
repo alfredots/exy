@@ -1,9 +1,9 @@
 import { useUserList } from './use-user-list';
 
-import { User } from '@/domain/entities';
+import { ListUsers } from '@/domain/use-cases';
 
 type UserListProps = {
-  listUsers: () => Promise<User[]>;
+  listUsers: ListUsers;
 };
 
 export const UserList = ({ listUsers }: UserListProps) => {

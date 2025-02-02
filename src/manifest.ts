@@ -1,4 +1,5 @@
 import { defineManifest } from '@crxjs/vite-plugin';
+
 import packageData from '../package.json';
 
 const isDev = process.env.NODE_ENV == 'development';
@@ -18,6 +19,17 @@ export const manifest = defineManifest({
     default_popup: 'popup.html',
     default_icon: 'img/logo-48.png'
   },
+  background: {
+    service_worker: 'src/background/index.ts',
+    type: 'module'
+  },
+  content_scripts: [
+    {
+      js: ['src/content-script/index.tsx'],
+      matches: ['http://*/*', 'https://*/*'],
+      run_at: 'document_idle'
+    }
+  ],
   web_accessible_resources: [
     {
       resources: ['img/logo-16.png', 'img/logo-32.png', 'img/logo-48.png', 'img/logo-128.png'],
