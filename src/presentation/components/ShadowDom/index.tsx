@@ -13,9 +13,7 @@ export const ShadowDom = ({
 }) => {
   const [shadowHost] = useState(() => document.createElement('my-shadow-host'));
 
-  const [shadowRoot] = useState(() =>
-    shadowHost.attachShadow({ mode: 'open' })
-  );
+  const [shadowRoot] = useState(() => shadowHost.attachShadow({ mode: 'open' }));
   const [target, setTarget] = useState<HTMLElement>();
 
   const sectionRef = useRef<HTMLElement>(null);
