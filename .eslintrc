@@ -22,7 +22,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "prettier", "check-file", "import-helpers"],
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "prettier"],
   "settings": {
     "react": {
       "version": "detect"
@@ -38,17 +38,6 @@
     "no-case-declarations": 0,
     "@typescript-eslint/no-unused-vars": "warn",
     "react/react-in-jsx-scope": "off",
-
-    "check-file/filename-naming-convention": [
-      "error",
-      {
-        "**/*.{tsx}": "PASCAL_CASE",
-        "**/*.{ts}": "KEBAB_CASE"
-      },
-      {
-        "ignoreMiddleExtensions": true
-      }
-    ],
     "import/order": [
       "error",
       {
