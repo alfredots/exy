@@ -1,5 +1,5 @@
+import { UserRemoteResponse } from '@/application/dto';
 import { User } from '@/domain/entities';
-import { UserRemoteResponse } from '@/infra/dto';
 
 export interface UserMapper {
   toDomain(data: UserRemoteResponse): User;

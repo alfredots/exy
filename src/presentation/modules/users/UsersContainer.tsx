@@ -1,13 +1,22 @@
-import { makeListUsers } from '@/main/use-cases';
-import { UserList } from '@/presentation/modules/users/components/UserList';
+import { useMemo } from 'react';
+
+import { makeGetUsers } from '@/main/use-cases/user-service';
+import { UserListView } from '@/presentation/modules/users/components/UserListView';
+import { useUserList } from '@/presentation/modules/users/hooks/use-user-list';
 
 export const UsersContainer = () => {
-  const listUsers = makeListUsers();
+  const memoizedMakeGetUsers = useMemo(makeGetUsers, []);
+
+  const { users } = useUserList({ getUsers: memoizedMakeGetUsers });
+
+  if (users.length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
       <h3>UsersContainer</h3>
-      <UserList listUsers={listUsers} />
+      <UserListView users={users} />
     </>
   );
 };

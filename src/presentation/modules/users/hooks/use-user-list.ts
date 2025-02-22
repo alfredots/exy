@@ -1,26 +1,26 @@
 import { useState, useEffect } from 'react';
 
 import { User } from '@/domain/entities';
-import { ListUsers } from '@/domain/use-cases';
+import { GetUsers } from '@/domain/use-cases';
 
-type UseUserListProps = {
-  listUsers: ListUsers;
+type Props = {
+  getUsers: GetUsers;
 };
 
-export const useUserList = ({ listUsers }: UseUserListProps) => {
-  const [users, setUsers] = useState<User[] | null>(null);
+export const useUserList = ({ getUsers }: Props) => {
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const init = async () => {
       try {
-        const res = await listUsers.execute();
+        const res = await getUsers.execute();
         setUsers(res);
       } catch (error) {
         console.error(error);
       }
     };
     init();
-  }, [listUsers]);
+  }, [getUsers]);
 
   return {
     users

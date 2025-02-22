@@ -1,3 +1,3 @@
-import { UserMapper, UserMapperImpl } from '@/infra/mappers';
+import { UserMapper, UserMapperImpl } from '@/application/mappers';
 
 export const makeUserMapper = (): UserMapper => new UserMapperImpl();
