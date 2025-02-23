@@ -1,28 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { User } from '@/domain/entities';
 import { GetUsers } from '@/domain/use-cases';
+import { useAsyncReducer } from '@/presentation/hooks/use-async-reducer';
 
 type Props = {
   getUsers: GetUsers;
 };
 
 export const useUserList = ({ getUsers }: Props) => {
-  const [users, setUsers] = useState<User[]>([]);
+  const [{ data, ...rest }, dispatch] = useAsyncReducer<User[]>([]);
 
   useEffect(() => {
-    const init = async () => {
+    (async () => {
       try {
+        dispatch({ type: 'FETCH_START' });
         const res = await getUsers.execute();
-        setUsers(res);
+        dispatch({ type: 'FETCH_SUCCESS', payload: res });
       } catch (error) {
         console.error(error);
+        dispatch({ type: 'FETCH_ERROR' });
       }
-    };
-    init();
-  }, [getUsers]);
+    })();
+  }, [getUsers, dispatch]);
 
-  return {
-    users
-  };
+  return { users: data, ...rest };
 };

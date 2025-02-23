@@ -7,10 +7,14 @@ import { useUserList } from '@/presentation/modules/users/hooks/use-user-list';
 export const UsersContainer = () => {
   const memoizedMakeGetUsers = useMemo(makeGetUsers, []);
 
-  const { users } = useUserList({ getUsers: memoizedMakeGetUsers });
+  const { users, isLoading, isError } = useUserList({ getUsers: memoizedMakeGetUsers });
 
-  if (users.length === 0) {
+  if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error...</div>;
   }
 
   return (
