@@ -6,14 +6,13 @@
 
 # Features
 
-- Lightning Fast HMR(use [Vite@latest](https://vitejs.dev))
-- TypeScript Supported([TypeScript](https://www.typescriptlang.org/))
-- Criação de hooks para facilitar a comunicação com as APIs do Chrome Extensions.
-- Creation of custom hooks to simplify communication with Chrome Extensions APIs.
-- Type-safe access to storage data.
-- Creation of wrappers for the APIs, providing type safety.
-- Project structure following the MVVM pattern.
-- Organization of shared files using a package-based architecture.
+- Lightning Fast HMR (using [Vite@latest](https://vitejs.dev))
+- TypeScript Support ([TypeScript](https://www.typescriptlang.org/))
+- Creation of custom hooks to simplify communication with Chrome Extensions APIs
+- Type-safe access to storage data
+- Creation of API wrappers to ensure type safety
+- Project structure following the MVVM pattern
+- Organization of shared files using a package-based architecture
 
 # Installing
 
